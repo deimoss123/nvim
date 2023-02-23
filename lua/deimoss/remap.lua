@@ -1,35 +1,52 @@
 vim.g.mapleader = ' '
 
-vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
-vim.keymap.set({ 'n', 'i' }, '<C-s>', vim.cmd.w)
-
-vim.keymap.set('n', '<leader>t', vim.cmd.ToggleTerm)
-vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
-
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
-
-vim.keymap.set('n', 'J', 'mzJ`z')
-vim.keymap.set('n', '<C-d>', '<C-d>zz')
-vim.keymap.set('n', '<C-u>', '<C-u>zz')
-vim.keymap.set('n', 'n', 'nzzzv')
-vim.keymap.set('n', 'N', 'Nzzzv')
-
-vim.keymap.set('x', '<leader>p', '"_dP')
-
-vim.keymap.set('n', '<leader>y', '"+y')
-vim.keymap.set('v', '<leader>y', '"+y')
-vim.keymap.set('n', '<leader>Y', '"+Y')
-
-vim.keymap.set('n', '<leader>d', '"_d')
-vim.keymap.set('v', '<leader>d', '"_d')
-
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
-
--- barbar
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
+-- go to netrw
+map('n', '<leader>pv', vim.cmd.Ex)
+map('n', '<leader>e', ':Lex 30<cr>', opts)
+
+-- ctrl + s = save obviously
+map({ 'n', 'i' }, '<C-s>', vim.cmd.w)
+
+-- toggle terminal
+map('n', '<leader>t', vim.cmd.ToggleTerm)
+map('n', '<leader>u', vim.cmd.UndotreeToggle)
+
+-- move selection (very cool remap)
+map('v', 'J', ":m '>+1<CR>gv=gv", opts)
+map('v', 'K', ":m '<-2<CR>gv=gv", opts)
+
+-- dont move cursor when doing J
+map('n', 'J', 'mzJ`z', opts)
+
+-- keep cursor in the center of screen
+map('n', '<C-d>', '<C-d>zz', opts)
+map('n', '<C-u>', '<C-u>zz', opts)
+map('n', 'n', 'nzzzv', opts)
+map('n', 'N', 'Nzzzv', opts)
+
+-- paste into void buffer
+map('v', 'p', '"_dP', opts)
+
+-- copy to system clipboard
+map('n', '<leader>y', '"+y', opts)
+map('v', '<leader>y', '"+y', opts)
+map('n', '<leader>Y', '"+Y', opts)
+
+-- delete into void buffer
+map('n', '<leader>d', '"_d', opts)
+map('v', '<leader>d', '"_d', opts)
+
+-- stay in visual mode when indenting
+map('v', '>', '>gv', opts)
+map('v', '<', '<gv', opts)
+
+-- escape terminal
+map('t', '<Esc>', '<C-\\><C-n>', opts)
+
+-- for navigating buffers
 map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
 map('n', '<A-.>', '<Cmd>BufferNext<CR>', opts)
 
