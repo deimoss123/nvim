@@ -1,2 +1,1 @@
-require("deimoss")
-
+require 'deimoss'
