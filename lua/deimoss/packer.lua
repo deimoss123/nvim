@@ -75,4 +75,9 @@ return require('packer').startup(function(use)
   use { 'lewis6991/gitsigns.nvim', opts = {} }
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'b0o/schemastore.nvim'
+  use {
+    'kylechui/nvim-surround',
+    tag = '*', -- Use for stability; omit to use `main` branch for the latest features
+    opts = {},
+  }
 end)
