@@ -1,3 +1,5 @@
+vim.cmd [[packadd packer.nvim]]
+
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
@@ -54,30 +56,61 @@ return require('packer').startup(function(use)
   --     end
   -- }
 
+  use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
   use { 'romgrk/barbar.nvim', requires = 'nvim-web-devicons' }
-  use { 'akinsho/toggleterm.nvim', tag = '*', opts = {} }
+
+  use {
+    'akinsho/toggleterm.nvim',
+    tag = '*',
+    config = function()
+      require('toggleterm').setup()
+    end,
+  }
+
   use 'numToStr/Comment.nvim'
-  use { 'windwp/nvim-autopairs', opts = {} }
-  use { 'j-hui/fidget.nvim', opts = {} }
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup {}
+    end,
+  }
+
+  --   'j-hui/fidget.nvim',
+  --   config = function()
+  --     require('fidget').setup {}
+  --   end,
+  -- }
 
   use {
     'lukas-reineke/indent-blankline.nvim',
-    opts = {
-      show_current_context = true,
-      show_current_context_start = false,
-      -- char = "▎",
-      -- char = "┊",
-      char = '¦',
-    },
+    config = function()
+      require('indent_blankline').setup {
+        show_current_context = true,
+        show_current_context_start = false,
+        -- char = "▎",
+        -- char = "┊",
+        char = '¦',
+      }
+    end,
   }
 
   use 'lambdalisue/fern.vim'
-  use { 'lewis6991/gitsigns.nvim', opts = {} }
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end,
+  }
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'b0o/schemastore.nvim'
   use {
     'kylechui/nvim-surround',
-    tag = '*', -- Use for stability; omit to use `main` branch for the latest features
-    opts = {},
+    tag = '*',
+    config = function()
+      require('nvim-surround').setup {}
+    end,
   }
+  use('arkav/lualine-lsp-progress')
+
+  require 'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 end)

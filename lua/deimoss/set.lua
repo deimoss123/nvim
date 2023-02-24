@@ -11,7 +11,7 @@ vim.opt.smartindent = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = 'C:/nvim/undodir'
+vim.opt.undodir = os.getenv("HOME") .. '/.vim/undodir'
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
@@ -37,5 +37,3 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.cmd.colorscheme 'tokyonight'
-
-vim.opt.guifont = { 'JetBrainsMonoNL Nerd Font Mono', ':h11' }

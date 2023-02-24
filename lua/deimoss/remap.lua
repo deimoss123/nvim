@@ -8,7 +8,7 @@ map('n', '<leader>pv', vim.cmd.Ex)
 map('n', '<leader>e', ':Lex 30<cr>', opts)
 
 -- ctrl + s = save obviously
-map({ 'n', 'i' }, '<C-s>', vim.cmd.w)
+map({ 'n', 'i' }, '<C-s>', ':w!<cr>')
 
 -- toggle terminal
 map('n', '<leader>t', vim.cmd.ToggleTerm)
