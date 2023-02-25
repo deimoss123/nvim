@@ -1,8 +1,8 @@
-require('telescope').setup({
+require('telescope').setup {
   defaults = {
-    winblend = 5;
+    winblend = 5,
   },
-})
+}
 
 local builtin = require 'telescope.builtin'
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles' })

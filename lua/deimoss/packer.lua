@@ -56,7 +56,7 @@ return require('packer').startup(function(use)
   --     end
   -- }
 
-  use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
+  use { 'akinsho/bufferline.nvim', tag = 'v3.*', requires = 'nvim-tree/nvim-web-devicons' }
   use { 'romgrk/barbar.nvim', requires = 'nvim-web-devicons' }
 
   use {
@@ -110,16 +110,15 @@ return require('packer').startup(function(use)
       require('nvim-surround').setup {}
     end,
   }
-  use('arkav/lualine-lsp-progress')
+  use 'arkav/lualine-lsp-progress'
 
   use {
-    "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
+    'folke/todo-comments.nvim',
+    requires = 'nvim-lua/plenary.nvim',
     config = function()
-      require("todo-comments").setup { signs = false }
-    end
+      require('todo-comments').setup { signs = false }
+    end,
   }
-
 
   use {
     'norcalli/nvim-colorizer.lua',
