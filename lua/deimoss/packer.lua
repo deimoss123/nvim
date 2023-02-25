@@ -112,5 +112,19 @@ return require('packer').startup(function(use)
   }
   use('arkav/lualine-lsp-progress')
 
-  require 'nvim-treesitter.configs'.setup { highlight = { enable = true } }
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup { signs = false }
+    end
+  }
+
+
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup {}
+    end,
+  }
 end)

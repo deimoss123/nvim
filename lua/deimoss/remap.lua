@@ -1,14 +1,14 @@
 vim.g.mapleader = ' '
+vim.g.maplocalleader = " "
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- go to netrw
-map('n', '<leader>pv', vim.cmd.Ex)
-map('n', '<leader>e', ':Lex 30<cr>', opts)
+map('n', '<leader>e', '<cmd>Lex 30<cr>', opts)
 
 -- ctrl + s = save obviously
-map({ 'n', 'i' }, '<C-s>', ':w!<cr>')
+map({ 'n', 'i' }, '<C-s>', '<cmd>w!<cr>')
 
 -- toggle terminal
 map('n', '<leader>t', vim.cmd.ToggleTerm)
