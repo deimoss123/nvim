@@ -12,7 +12,7 @@ map('n', '<leader>e', '<cmd>NvimTreeFindFileToggle<cr>', opts)
 map({ 'n', 'i' }, '<C-s>', '<cmd>w!<cr>')
 
 -- toggle terminal
-map('n', '<leader>t', "<cmd>TroubleToggle<cr>zz")
+map('n', '<leader>t', '<cmd>TroubleToggle<cr>zz')
 map('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 -- move selection (very cool remap)
