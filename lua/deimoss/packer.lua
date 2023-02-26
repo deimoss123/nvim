@@ -44,28 +44,16 @@ return require('packer').startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   }
 
-  -- use {
-  --     "folke/trouble.nvim",
-  --     requires = "nvim-tree/nvim-web-devicons",
-  --     config = function()
-  --         require("trouble").setup {
-  --             -- your configuration comes here
-  --             -- or leave it empty to use the default settings
-  --             -- refer to the configuration section below
-  --         }
-  --     end
-  -- }
+  use {
+    'folke/trouble.nvim',
+    requires = 'nvim-tree/nvim-web-devicons',
+    config = function()
+      require('trouble').setup {}
+    end,
+  }
 
   use { 'akinsho/bufferline.nvim', tag = 'v3.*', requires = 'nvim-tree/nvim-web-devicons' }
   use { 'romgrk/barbar.nvim', requires = 'nvim-web-devicons' }
-
-  use {
-    'akinsho/toggleterm.nvim',
-    tag = '*',
-    config = function()
-      require('toggleterm').setup()
-    end,
-  }
 
   use 'numToStr/Comment.nvim'
   use {
@@ -94,7 +82,7 @@ return require('packer').startup(function(use)
     end,
   }
 
-  use 'lambdalisue/fern.vim'
+  -- use 'lambdalisue/fern.vim'
   use {
     'lewis6991/gitsigns.nvim',
     config = function()
@@ -125,5 +113,13 @@ return require('packer').startup(function(use)
     config = function()
       require('colorizer').setup {}
     end,
+  }
+
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+    tag = 'nightly', -- optional, updated every week. (see issue #1193)
   }
 end)
