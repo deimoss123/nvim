@@ -8,9 +8,9 @@ local diagnostics = null_ls.builtins.diagnostics
 
 null_ls.setup {
   sources = {
-    formatting.prettier.with { extra_args = { '--single-quote', '--print-width', '100', '--arrow-parens', 'avoid' } },
+    formatting.prettierd,
     formatting.stylua,
     formatting.rustfmt,
-    diagnostics.eslint,
+    diagnostics.eslint_d,
   },
 }

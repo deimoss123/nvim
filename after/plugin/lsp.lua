@@ -3,10 +3,10 @@ local lsp = require 'lsp-zero'
 lsp.preset 'recommended'
 
 lsp.ensure_installed {
-  'tsserver',
-  'eslint',
   'rust_analyzer',
   'jsonls',
+  'html',
+  'cssls',
 }
 
 local cmp = require 'cmp'
@@ -44,7 +44,7 @@ cmp.event:on(
   }
 )
 
-lsp.setup_nvim_cmp { mapping = cmp_mappings }
+lsp.setup_nvim_cmp { mapping = cmp_mapping }
 
 lsp.on_attach(function(client, bufnr)
   local nmap = function(keys, func, desc)
@@ -73,15 +73,15 @@ lsp.on_attach(function(client, bufnr)
     end, { buffer = bufnr, desc = '[lsp] format' })
 
     -- format on save
-    -- vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
-    -- vim.api.nvim_create_autocmd(event, {
-    --     buffer = bufnr,
-    --     group = group,
-    --     callback = function()
-    --         vim.lsp.buf.format({ bufnr = bufnr, async = async })
-    --     end,
-    --     desc = "[lsp] format on save",
-    -- })
+    vim.api.nvim_clear_autocmds { buffer = bufnr, group = group }
+    vim.api.nvim_create_autocmd(event, {
+      buffer = bufnr,
+      group = group,
+      callback = function()
+        vim.lsp.buf.format { bufnr = bufnr, async = async }
+      end,
+      desc = '[lsp] format on save',
+    })
   end
 
   if client.supports_method 'textDocument/rangeFormatting' then
@@ -105,6 +105,10 @@ lsp.configure('jsonls', {
     },
   },
 })
+
+-- These servers are installed with bun globally for MAX SPEED
+-- bun add --global typescript-language-server tailwindcss-language-server
+lsp.setup_servers { 'tsserver', 'tailwindcss', force = true }
 
 lsp.nvim_workspace()
 lsp.setup()
