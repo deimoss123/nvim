@@ -55,7 +55,7 @@ return require('packer').startup(function(use)
   }
 
   use { 'akinsho/bufferline.nvim', tag = 'v3.*', requires = 'nvim-tree/nvim-web-devicons' }
-  use { 'romgrk/barbar.nvim', requires = 'nvim-web-devicons' }
+  -- use { 'romgrk/barbar.nvim', requires = 'nvim-web-devicons' }
 
   use 'numToStr/Comment.nvim'
   use {
@@ -110,12 +110,7 @@ return require('packer').startup(function(use)
     end,
   }
 
-  use {
-    'norcalli/nvim-colorizer.lua',
-    config = function()
-      require('colorizer').setup {}
-    end,
-  }
+  use 'norcalli/nvim-colorizer.lua'
 
   use {
     'nvim-tree/nvim-tree.lua',
@@ -124,4 +119,6 @@ return require('packer').startup(function(use)
     },
     tag = 'nightly', -- optional, updated every week. (see issue #1193)
   }
+
+  use { 'catppuccin/nvim', as = 'catppuccin' }
 end)

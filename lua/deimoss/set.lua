@@ -23,6 +23,8 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = 'yes'
 vim.opt.isfname:append '@-@'
 
+vim.opt.cursorline = true
+
 vim.opt.updatetime = 50
 
 -- vim.opt.colorcolumn = "80"
@@ -35,5 +37,3 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'rust' },
   command = 'setlocal shiftwidth=4 tabstop=4',
 })
-
-vim.cmd.colorscheme 'tokyonight'

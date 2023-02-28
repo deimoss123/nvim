@@ -2,7 +2,8 @@ require 'deimoss.remap'
 require 'deimoss.packer'
 require 'deimoss.set'
 
-vim.cmd.colorscheme 'tokyonight'
+-- vim.cmd.colorscheme 'tokyonight'
+vim.cmd.colorscheme 'catppuccin'
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

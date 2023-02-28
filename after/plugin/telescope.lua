@@ -1,6 +1,6 @@
 require('telescope').setup {
   defaults = {
-    winblend = 5,
+    -- winblend = 5,
   },
 }
 
