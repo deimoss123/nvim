@@ -13,7 +13,6 @@ return require('packer').startup(function(use)
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
   use 'nvim-treesitter/nvim-treesitter-context'
 
-  use 'theprimeagen/harpoon'
   use 'mbbill/undotree'
   use 'tpope/vim-fugitive'
   use 'nvim-tree/nvim-web-devicons'
@@ -55,7 +54,7 @@ return require('packer').startup(function(use)
   }
 
   use { 'akinsho/bufferline.nvim', tag = 'v3.*', requires = 'nvim-tree/nvim-web-devicons' }
-  -- use { 'romgrk/barbar.nvim', requires = 'nvim-web-devicons' }
+  use { 'romgrk/barbar.nvim', requires = 'nvim-web-devicons' }
 
   use 'numToStr/Comment.nvim'
   use {
@@ -92,6 +91,7 @@ return require('packer').startup(function(use)
     end,
   }
   use 'jose-elias-alvarez/null-ls.nvim'
+  use 'MunifTanjim/prettier.nvim'
   use 'b0o/schemastore.nvim'
   use {
     'kylechui/nvim-surround',
@@ -110,7 +110,7 @@ return require('packer').startup(function(use)
     end,
   }
 
-  use 'norcalli/nvim-colorizer.lua'
+  use 'NvChad/nvim-colorizer.lua'
 
   use {
     'nvim-tree/nvim-tree.lua',
@@ -121,4 +121,16 @@ return require('packer').startup(function(use)
   }
 
   use { 'catppuccin/nvim', as = 'catppuccin' }
+
+  use 'ThePrimeagen/vim-be-good'
+
+  use {
+    'smjonas/inc-rename.nvim',
+    config = function()
+      require('inc_rename').setup()
+    end,
+  }
+
+  use 'onsails/lspkind.nvim'
+  use 'windwp/nvim-ts-autotag'
 end)

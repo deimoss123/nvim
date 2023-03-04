@@ -4,14 +4,10 @@ vim.g.maplocalleader = ' '
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- go to netrw
--- map('n', '<leader>e', '<cmd>Lex 30<cr>', opts)
 map('n', '<leader>e', '<cmd>NvimTreeFindFileToggle<cr>', opts)
 
 -- ctrl + s = save obviously
-map({ 'n', 'i' }, '<C-s>', '<cmd>w!<cr>')
-
--- toggle terminal
+map('n', '<leader>w', '<cmd>w<cr>')
 map('n', '<leader>t', '<cmd>TroubleToggle<cr>zz')
 map('n', '<leader>u', vim.cmd.UndotreeToggle)
 
@@ -47,6 +43,12 @@ map('v', '<', '<gv', opts)
 -- escape terminal
 map('t', '<Esc>', '<C-\\><C-n>', opts)
 
+-- select all
+map('n', '<C-a>', 'gg0vG$', opts)
+
+-- rename
+map('n', '<leader>rn', ':IncRename ', opts)
+
 -- for navigating buffers
 map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
 map('n', '<A-.>', '<Cmd>BufferNext<CR>', opts)
@@ -65,5 +67,4 @@ map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', opts)
 map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', opts)
 map('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
 
-map('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
 map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)

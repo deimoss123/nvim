@@ -1,5 +1,5 @@
 require('catppuccin').setup {
-  flavour = 'frappe', -- latte, frappe, macchiato, mocha
+  flavour = 'mocha', -- latte, frappe, macchiato, mocha
   background = { -- :h background
     light = 'latte',
     dark = 'mocha',
@@ -36,7 +36,7 @@ require('catppuccin').setup {
     return {
       TelescopeNormal = {
         bg = c.crust,
-        fg = c.maroon,
+        fg = c.white,
       },
       TelescopeBorder = {
         bg = c.crust,
@@ -75,7 +75,7 @@ require('catppuccin').setup {
 }
 
 -- setup must be called before loading
-vim.cmd.colorscheme 'catppuccin'
+-- vim.cmd.colorscheme 'catppuccin'
 --
 -- Name 	    Latte 	  Frappe 	  Macchiato Mocha   	Usage
 -- rosewater 	#dc8a78 	#F2D5CF 	#F4DBD6 	#F5E0DC 	Winbar

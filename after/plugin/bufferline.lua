@@ -7,4 +7,6 @@ require('bufferline').setup {
     buffer_close_icon = '',
     close_icon = '',
   },
+  closable = false,
+  minimum_padding = 0,
 }

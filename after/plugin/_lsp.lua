@@ -7,6 +7,7 @@ lsp.ensure_installed {
   'jsonls',
   'html',
   'cssls',
+  'tsserver',
 }
 
 local cmp = require 'cmp'
@@ -15,34 +16,6 @@ local cmp_mapping = lsp.defaults.cmp_mappings {
   ['<C-p>'] = cmp.mapping.select_next_item(cmp_select),
   ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
 }
-
-cmp.setup {
-  experimental = {
-    ghost_text = true,
-    native_menu = false,
-  },
-}
-
-local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
-local handlers = require 'nvim-autopairs.completion.handlers'
-
-cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done {
-    filetypes = {
-      -- "*" is a alias to all filetypes
-      ['*'] = {
-        ['('] = {
-          kind = {
-            cmp.lsp.CompletionItemKind.Function,
-            cmp.lsp.CompletionItemKind.Method,
-          },
-          handler = handlers['*'],
-        },
-      },
-    },
-  }
-)
 
 lsp.setup_nvim_cmp { mapping = cmp_mapping }
 
@@ -106,9 +79,18 @@ lsp.configure('jsonls', {
   },
 })
 
--- These servers are installed with bun globally for MAX SPEED
--- bun add --global typescript-language-server tailwindcss-language-server
-lsp.setup_servers { 'tsserver', 'tailwindcss', force = true }
+lsp.configure('emmet_ls', {
+  -- capabilities = capabilities,
+  filetypes = { 'html', 'typescriptreact', 'javascriptreact' },
+  init_options = {
+    html = {
+      options = {
+        -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+        ['bem.enabled'] = true,
+      },
+    },
+  },
+})
 
 lsp.nvim_workspace()
 lsp.setup()
