@@ -13,8 +13,8 @@ require('tokyonight').setup {
     functions = {},
     variables = {},
     -- Background styles. Can be "dark", "transparent" or "normal"
-    sidebars = 'moon', -- style for sidebars, see below
-    floats = 'dark', -- style for floating windows
+    sidebars = 'transparent', -- style for sidebars, see below
+    floats = 'transparent', -- style for floating windows
   },
   sidebars = { 'qf', 'help', 'NvimTree' }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
   day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
@@ -80,8 +80,11 @@ require('tokyonight').setup {
     hl.CmpDocBorder = {
       fg = c.fg_gutter,
     }
-    hl.CmpPmenu = {
-      bg = c.bg,
+    hl.CursorLineNr = {
+      fg = c.blue,
+    }
+    hl.LineNr = {
+      fg = c.fg_dark,
     }
   end,
 }
@@ -126,3 +129,4 @@ local _ = {
 }
 
 vim.cmd.colorscheme 'tokyonight'
+-- vim.cmd("highlight CmpPmenu guibg=NONE")

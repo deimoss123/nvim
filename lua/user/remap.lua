@@ -44,7 +44,7 @@ map('v', '<', '<gv', opts)
 map('t', '<Esc>', '<C-\\><C-n>', opts)
 
 -- select all
-map('n', '<C-a>', 'gg0vG$', opts)
+map('n', '<leader>a', 'gg0vG$', opts)
 
 -- rename
 map('n', '<leader>rn', ':IncRename ', opts)
@@ -68,3 +68,17 @@ map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', opts)
 map('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
 
 map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
+
+local ls = require 'luasnip'
+
+map({ 'i', 's' }, '<c-k>', function()
+  if ls.expand_or_jumpable() then
+    ls.expand_or_jump()
+  end
+end, opts)
+
+map({ 'i', 's' }, '<c-j>', function()
+  if ls.jumpable(-1) then
+    ls.jump(-1)
+  end
+end, opts)

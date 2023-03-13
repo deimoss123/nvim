@@ -13,8 +13,8 @@ lsp.ensure_installed {
 local cmp = require 'cmp'
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mapping = lsp.defaults.cmp_mappings {
-  ['<C-p>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
+  -- ['<C-p>'] = cmp.mapping.select_next_item(cmp_select),
+  -- ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
 }
 
 lsp.setup_nvim_cmp { mapping = cmp_mapping }
@@ -79,18 +79,21 @@ lsp.configure('jsonls', {
   },
 })
 
-lsp.configure('emmet_ls', {
-  -- capabilities = capabilities,
-  filetypes = { 'html', 'typescriptreact', 'javascriptreact' },
-  init_options = {
-    html = {
-      options = {
-        -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
-        ['bem.enabled'] = true,
-      },
-    },
-  },
-})
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
+--
+-- lsp.configure('emmet_ls', {
+--   capabilities = capabilities,
+--   filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
+--   init_options = {
+--     html = {
+--       options = {
+--         -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+--         ['bem.enabled'] = true,
+--       },
+--     },
+--   },
+-- })
 
 lsp.nvim_workspace()
 lsp.setup()
